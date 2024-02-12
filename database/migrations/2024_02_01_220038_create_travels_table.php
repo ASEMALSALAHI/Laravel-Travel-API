@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('travels', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->boolean(column: 'is_public')->default(value: false);
             $table->string(column: 'slug')->unique();
             $table->string(column: 'name');
