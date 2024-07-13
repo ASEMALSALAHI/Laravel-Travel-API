@@ -19,4 +19,17 @@ class TravelsListTest extends TestCase
         $response->assertJsonCount(count:15, key:'data');
         $response->assertJsonPath('meta.last_page', expect: 2);
     }
+
+
+    public function test_travels_list_shows_only_public_records(): void
+    {
+        $publicTravel =  Travel::factory()->create(['is_public'=>true]);
+        Travel::factory()->create(['is_public'=>false]);
+        $response = $this->get('/api/v1/travels');
+
+        $response->assertStatus(200);
+        $response->assertJsonCount(count:1 , key:'data');
+        $response->assertJsonPath('data.0.name', $publicTravel->name);
+    }
+
 }
