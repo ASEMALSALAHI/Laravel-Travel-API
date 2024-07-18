@@ -27,3 +27,5 @@ Route::prefix('admin')->group(function () {
     Route::post('travels', [App\Http\Controllers\Api\V1\Admin\TravelController::class, 'store']);
 });
 
+
+Route::post('login', App\Http\Controllers\Api\V1\Auth\LoginController::class);
