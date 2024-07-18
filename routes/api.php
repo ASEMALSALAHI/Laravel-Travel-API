@@ -21,3 +21,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('travels', [App\Http\Controllers\Api\V1\TravelController::class, 'index']);
 Route::get('travels/{travel:slug}/tours', [App\Http\Controllers\Api\V1\TourController::class, 'index']);
+
+
+Route::prefix('admin')->group(function () {
+    Route::post('travels', [App\Http\Controllers\Api\V1\Admin\TravelController::class, 'store']);
+});
+
