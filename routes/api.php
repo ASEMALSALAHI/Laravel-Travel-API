@@ -23,7 +23,7 @@ Route::get('travels', [App\Http\Controllers\Api\V1\TravelController::class, 'ind
 Route::get('travels/{travel:slug}/tours', [App\Http\Controllers\Api\V1\TourController::class, 'index']);
 
 
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->middleware(['auth:sanctum', 'role:admin'])->group(function () {
     Route::post('travels', [App\Http\Controllers\Api\V1\Admin\TravelController::class, 'store']);
 });
 
