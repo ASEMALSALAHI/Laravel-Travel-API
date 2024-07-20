@@ -23,9 +23,13 @@ Route::get('travels', [App\Http\Controllers\Api\V1\TravelController::class, 'ind
 Route::get('travels/{travel:slug}/tours', [App\Http\Controllers\Api\V1\TourController::class, 'index']);
 
 
-Route::prefix('admin')->middleware(['auth:sanctum', 'role:admin'])->group(function () {
-    Route::post('travels', [App\Http\Controllers\Api\V1\Admin\TravelController::class, 'store']);
-    Route::post('travels/{travel}/tours', [App\Http\Controllers\Api\V1\Admin\TourController::class, 'store']);
+Route::prefix('admin')->middleware('auth:sanctum')->group(function () {
+    Route::middleware('role:admin')->group(function () {
+        Route::post('travels', [\App\Http\Controllers\Api\V1\Admin\TravelController::class, 'store']);
+        Route::post('travels/{travel}/tours', [\App\Http\Controllers\Api\V1\Admin\TourController::class, 'store']);
+    });
+
+    Route::put('travels/{travel}', [\App\Http\Controllers\Api\V1\Admin\TravelController::class, 'update']);
 });
 
 
