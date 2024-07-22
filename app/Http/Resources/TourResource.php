@@ -9,7 +9,7 @@ class TourResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
-     *
+     ** @mixin \App\Models\Tour
      * @return array<string, mixed>
      */
     public function toArray(Request $request): array

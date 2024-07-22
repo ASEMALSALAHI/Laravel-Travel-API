@@ -9,7 +9,8 @@ class TravelResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
-     *
+     * @mixin \App\Models\Travel
+     * @property int $number_of_nights
      * @return array<string, mixed>
      */
     public function toArray(Request $request): array
