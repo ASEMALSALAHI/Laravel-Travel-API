@@ -2,14 +2,12 @@
 
 namespace App\Console\Commands;
 
-
-
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rules\Password;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Console\Command;
 use App\Models\Role;
 use App\Models\User;
+use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rules\Password;
 
 class CreateUserCommand extends Command
 {

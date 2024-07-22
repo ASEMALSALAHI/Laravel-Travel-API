@@ -1,13 +1,16 @@
 <?php
+
 namespace Tests\Feature;
+
 use App\Models\Tour;
 use App\Models\Travel;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+
 class ToursListTest extends TestCase
 {
-
     use RefreshDatabase;
+
     public function test_tours_list_by_travel_slug_returns_correct_tours(): void
     {
         $travel = Travel::factory()->create();

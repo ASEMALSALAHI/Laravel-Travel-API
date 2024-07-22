@@ -18,10 +18,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
 Route::get('travels', [App\Http\Controllers\Api\V1\TravelController::class, 'index']);
 Route::get('travels/{travel:slug}/tours', [App\Http\Controllers\Api\V1\TourController::class, 'index']);
-
 
 Route::prefix('admin')->middleware('auth:sanctum')->group(function () {
     Route::middleware('role:admin')->group(function () {
@@ -31,6 +29,5 @@ Route::prefix('admin')->middleware('auth:sanctum')->group(function () {
 
     Route::put('travels/{travel}', [\App\Http\Controllers\Api\V1\Admin\TravelController::class, 'update']);
 });
-
 
 Route::post('login', App\Http\Controllers\Api\V1\Auth\LoginController::class);

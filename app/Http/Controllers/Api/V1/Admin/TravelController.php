@@ -22,5 +22,4 @@ class TravelController extends Controller
 
         return new TravelResource($travel);
     }
-
 }

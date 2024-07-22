@@ -2,34 +2,32 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use App\Models\Travel;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class TravelsListTest extends TestCase
 {
-   use RefreshDatabase;
+    use RefreshDatabase;
+
     public function test_travels_list_returns_paginated_data_correctly(): void
     {
-        Travel::factory(count:16)->create(['is_public'=>true]);
+        Travel::factory(count: 16)->create(['is_public' => true]);
         $response = $this->get('/api/v1/travels');
 
         $response->assertStatus(200);
-        $response->assertJsonCount(count:15, key:'data');
+        $response->assertJsonCount(count: 15, key: 'data');
         $response->assertJsonPath('meta.last_page', expect: 2);
     }
 
-
     public function test_travels_list_shows_only_public_records(): void
     {
-        $publicTravel =  Travel::factory()->create(['is_public'=>true]);
-        Travel::factory()->create(['is_public'=>false]);
+        $publicTravel = Travel::factory()->create(['is_public' => true]);
+        Travel::factory()->create(['is_public' => false]);
         $response = $this->get('/api/v1/travels');
 
         $response->assertStatus(200);
-        $response->assertJsonCount(count:1 , key:'data');
+        $response->assertJsonCount(count: 1, key: 'data');
         $response->assertJsonPath('data.0.name', $publicTravel->name);
     }
-
 }
