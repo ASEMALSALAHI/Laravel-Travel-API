@@ -1,53 +1,3 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
-
-## About Laravel
-
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
-
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
 
 ## Contributing
 
@@ -59,8 +9,56 @@ In order to ensure that the Laravel community is welcoming to all, please review
 
 ## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Travel Agency API
 
-## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is a Laravel API application developed for a travel agency. It provides a set of endpoints to manage and retrieve travel and tour information, designed with robust authentication and role-based access control.
+
+You can also read it in a separate Google Docs format if you prefer from [here]( https://docs.google.com/document/d/1IqsnOB6sjoSEcgmjqHPhb58Ym-82x5jKDDxvTWeQsL0/edit?usp=sharing.
+) .
+- All thanks to Mr. Povilas Korop for this course.
+
+
+## Project Overview
+The Travel Agency API includes the following features:
+
+## Models and Relationships
+- Users: Managed with roles and permissions.
+- Roles: Define different access levels such as admin and editor.
+- Travels: Represents travel destinations with details such as name, description, and duration.
+- Tours: Specific date ranges and pricing for each travel destination.
+## Endpoints
+- Admin Endpoints (Private):
+   - Create new users.
+   - Create new travels.
+   - Create new tours for a travel.
+   - Update travels.
+
+- Public Endpoints (No authentication required):
+   -List of paginated travels (only public travels are returned).
+   -List of paginated tours by travel slug, with filtering options (price range, date range) and sorting by price and starting date.
+## Authentication
+   - Utilizes Laravel Sanctum for authentication.
+   - Roles and permissions control access to various CRUD operations.
+   - Admin users also have the editor role.
+## Pricing
+Tours prices are stored as integers (e.g., €999 is stored as 99900) and formatted on the frontend.
+## Additional Features
+- UUIDs: Used as primary keys for enhanced security and uniqueness.
+- Virtual Fields: Computed fields like number of nights derived from the number of days.
+- Code Quality: Utilized Laravel Pint for code formatting and maintaining a consistent code style.
+- Documentation: Generated using Scribe. Accessible at http://travel-api.test/docs.
+- Automated Tests: Implemented feature tests with every feature to ensure reliability and correctness.
+## Tools and Packages Used
+- Laravel Pint: For code formatting and ensuring clean, consistent code.
+- Scribe: For generating API documentation.
+- Laravel Sanctum: For authentication.
+- PHP-CS-Fixer: Ensuring code style and quality.
+- Larastan: For static analysis and improving code quality.
+## Getting Started :
+- Clone the repository.
+- Install dependencies via Composer.
+- Configure the .env file.
+- Run migrations and seed the database.
+- Serve the application using php artisan serve.
+
